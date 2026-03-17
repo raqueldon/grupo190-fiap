@@ -86,24 +86,25 @@ table dCalendario
 			lineageTag: c1c2c3c4-d1d2-e1e2-f1f2-a1a2a3a4a5a6
 			column: 'Mes Nome'
 
-	partition dCalendario = calculated
+	partition dCalendario = m
 		mode: import
 		source =
-				VAR _inicio = DATE(2020, 1, 1)
-				VAR _fim    = DATE(2024, 12, 31)
-				RETURN
-				ADDCOLUMNS(
-				    CALENDAR(_inicio, _fim),
-				    "Ano",           YEAR([Date]),
-				    "Mes Numero",    MONTH([Date]),
-				    "Mes Nome",      FORMAT([Date], "MMM", "pt-BR"),
-				    "Ano-Mes",       FORMAT([Date], "YYYY-MM"),
-				    "Trimestre",     "T" & QUARTER([Date]),
-				    "Ano-Trimestre", FORMAT([Date], "YYYY") & " T" & QUARTER([Date]),
-				    "Semestre",      IF(MONTH([Date]) <= 6, "1o Sem", "2o Sem")
-				)
+				let
+				    _inicio   = #date(2020, 1, 1),
+				    _fim      = #date(2024, 12, 31),
+				    NbDays    = Duration.Days(_fim - _inicio) + 1,
+				    Datas     = List.Dates(_inicio, NbDays, #duration(1, 0, 0, 0)),
+				    Tabela    = Table.FromList(Datas, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
+				    TipoDate  = Table.TransformColumnTypes(Tabela, {{"Date", type datetime}}),
+				    AddAno    = Table.AddColumn(TipoDate,  "Ano",           each Date.Year([Date]),                                                                        Int64.Type),
+				    AddMesNum = Table.AddColumn(AddAno,    "Mes Numero",    each Date.Month([Date]),                                                                       Int64.Type),
+				    AddMesNom = Table.AddColumn(AddMesNum, "Mes Nome",      each Text.Proper(Text.Start(Date.MonthName([Date], "pt-BR"), 3)),                              type text),
+				    AddAnoMes = Table.AddColumn(AddMesNom, "Ano-Mes",       each Text.From(Date.Year([Date])) & "-" & Text.PadStart(Text.From(Date.Month([Date])), 2, "0"), type text),
+				    AddTrim   = Table.AddColumn(AddAnoMes, "Trimestre",     each "T" & Text.From(Date.QuarterOfYear([Date])),                                             type text),
+				    AddAnoTri = Table.AddColumn(AddTrim,   "Ano-Trimestre", each Text.From(Date.Year([Date])) & " T" & Text.From(Date.QuarterOfYear([Date])),             type text),
+				    AddSem    = Table.AddColumn(AddAnoTri, "Semestre",      each if Date.Month([Date]) <= 6 then "1o Sem" else "2o Sem",                                  type text)
+				in
+				    AddSem
 
 	annotation PBI_ResultType = Table
-
-	annotation __PBI_MarkAsDateTable = column="Date"
 
