@@ -1,4 +1,5 @@
 relationship 7c1f47ea-acd6-4008-b6f7-8069fab3a852
+	isActive: false
 	joinOnDateBehavior: datePartOnly
 	fromColumn: vendas_linha_petshop_2020_2024.data
 	toColumn: LocalDateTable_d251799e-828b-44a4-91fb-095ad4b482f1.Date
