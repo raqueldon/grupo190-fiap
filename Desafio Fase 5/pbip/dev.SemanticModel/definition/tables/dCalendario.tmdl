@@ -86,25 +86,24 @@ table dCalendario
 			lineageTag: c1c2c3c4-d1d2-e1e2-f1f2-a1a2a3a4a5a6
 			column: 'Mes Nome'
 
-	partition dCalendario = m
+	partition dCalendario = calculated
 		mode: import
 		source =
-				let
-				    StartDate = #date(2020, 1, 1),
-				    EndDate   = #date(2024, 12, 31),
-				    NbDays    = Duration.Days(EndDate - StartDate) + 1,
-				    DateList  = List.Dates(StartDate, NbDays, #duration(1, 0, 0, 0)),
-				    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
-				    #"Tipo Alterado"          = Table.TransformColumnTypes(DateTable, {{"Date", type date}}),
-				    #"Ano Adicionado"         = Table.AddColumn(#"Tipo Alterado",         "Ano",           each Date.Year([Date]),                                          Int64.Type),
-				    #"Mes Numero Adicionado"  = Table.AddColumn(#"Ano Adicionado",         "Mes Numero",    each Date.Month([Date]),                                         Int64.Type),
-				    #"Mes Nome Adicionado"    = Table.AddColumn(#"Mes Numero Adicionado",  "Mes Nome",      each Date.ToText([Date], "MMM", "pt-BR"),                        type text),
-				    #"Ano-Mes Adicionado"     = Table.AddColumn(#"Mes Nome Adicionado",    "Ano-Mes",       each Date.ToText([Date], "yyyy-MM"),                             type text),
-				    #"Trimestre Adicionado"   = Table.AddColumn(#"Ano-Mes Adicionado",     "Trimestre",     each "T" & Text.From(Date.QuarterOfYear([Date])),                type text),
-				    #"AnoTrim Adicionado"     = Table.AddColumn(#"Trimestre Adicionado",   "Ano-Trimestre", each Text.From(Date.Year([Date])) & " T" & Text.From(Date.QuarterOfYear([Date])), type text),
-				    #"Semestre Adicionado"    = Table.AddColumn(#"AnoTrim Adicionado",     "Semestre",      each if Date.Month([Date]) <= 6 then "1o Sem" else "2o Sem",    type text)
-				in
-				    #"Semestre Adicionado"
+				VAR _inicio = DATE(2020, 1, 1)
+				VAR _fim    = DATE(2024, 12, 31)
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(_inicio, _fim),
+				    "Ano",           YEAR([Date]),
+				    "Mes Numero",    MONTH([Date]),
+				    "Mes Nome",      FORMAT([Date], "MMM", "pt-BR"),
+				    "Ano-Mes",       FORMAT([Date], "YYYY-MM"),
+				    "Trimestre",     "T" & QUARTER([Date]),
+				    "Ano-Trimestre", FORMAT([Date], "YYYY") & " T" & QUARTER([Date]),
+				    "Semestre",      IF(MONTH([Date]) <= 6, "1o Sem", "2o Sem")
+				)
 
 	annotation PBI_ResultType = Table
+
+	annotation __PBI_MarkAsDateTable = column="Date"
 
