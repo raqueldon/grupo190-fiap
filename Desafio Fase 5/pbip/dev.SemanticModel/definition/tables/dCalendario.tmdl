@@ -7,6 +7,7 @@ table dCalendario
 		formatString: Short Date
 		lineageTag: b2c3d4e5-f6a7-8901-bcde-f12345678901
 		summarizeBy: none
+		sourceColumn: Date
 
 		annotation SummarizationSetBy = Automatic
 
@@ -15,6 +16,7 @@ table dCalendario
 		formatString: 0
 		lineageTag: c3d4e5f6-a7b8-9012-cdef-123456789012
 		summarizeBy: none
+		sourceColumn: Ano
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +25,7 @@ table dCalendario
 		formatString: 0
 		lineageTag: d4e5f6a7-b8c9-0123-def0-234567890123
 		summarizeBy: none
+		sourceColumn: Mes Numero
 
 		annotation SummarizationSetBy = Automatic
 
@@ -30,6 +33,7 @@ table dCalendario
 		dataType: string
 		lineageTag: e5f6a7b8-c9d0-1234-ef01-345678901234
 		summarizeBy: none
+		sourceColumn: Mes Nome
 
 		annotation SummarizationSetBy = Automatic
 
@@ -38,6 +42,7 @@ table dCalendario
 		lineageTag: a7b8c9d0-e1f2-3456-0123-567890123456
 		summarizeBy: none
 		sortByColumn: Date
+		sourceColumn: Ano-Mes
 
 		annotation SummarizationSetBy = Automatic
 
@@ -45,6 +50,7 @@ table dCalendario
 		dataType: string
 		lineageTag: b8c9d0e1-f2a3-4567-1234-678901234567
 		summarizeBy: none
+		sourceColumn: Trimestre
 
 		annotation SummarizationSetBy = Automatic
 
@@ -53,6 +59,7 @@ table dCalendario
 		lineageTag: c9d0e1f2-a3b4-5678-2345-789012345678
 		summarizeBy: none
 		sortByColumn: Date
+		sourceColumn: Ano-Trimestre
 
 		annotation SummarizationSetBy = Automatic
 
@@ -60,6 +67,7 @@ table dCalendario
 		dataType: string
 		lineageTag: a3b4c5d6-e7f8-9012-6789-123456789012
 		summarizeBy: none
+		sourceColumn: Semestre
 
 		annotation SummarizationSetBy = Automatic
 
