@@ -1,0 +1,145 @@
+table vendas_linha_petshop_2020_2024
+	lineageTag: 2fd25c02-b933-4328-82ad-273ce1733127
+
+	column cod_pedido
+		dataType: int64
+		formatString: 0
+		lineageTag: c1287aa0-6f5d-4fc3-aac5-55329c1379cb
+		summarizeBy: sum
+		sourceColumn: cod_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column regiao_pais
+		dataType: string
+		lineageTag: 73424552-e9e2-44eb-8e09-d683c201c51f
+		summarizeBy: none
+		sourceColumn: regiao_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column produto
+		dataType: string
+		lineageTag: ab39dff9-1acd-43f7-b054-a48a386e7cc7
+		summarizeBy: none
+		sourceColumn: produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor
+		dataType: double
+		lineageTag: abec15e1-8547-4015-9bc4-d50d82782f2b
+		summarizeBy: sum
+		sourceColumn: valor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: c141fa6c-976d-4f27-8a3c-ad29c1095159
+		summarizeBy: sum
+		sourceColumn: quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_total_bruto
+		dataType: double
+		lineageTag: 1f89c9aa-766e-44c7-8c5d-429ca199c166
+		summarizeBy: sum
+		sourceColumn: valor_total_bruto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 221655f0-953b-43f9-a063-1b10357d095f
+		summarizeBy: none
+		sourceColumn: data
+
+		variation Variation
+			isDefault
+			relationship: 7c1f47ea-acd6-4008-b6f7-8069fab3a852
+			defaultHierarchy: LocalDateTable_d251799e-828b-44a4-91fb-095ad4b482f1.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column estado
+		dataType: string
+		lineageTag: 906a7db2-4be9-4f81-b13a-a50f8abdd3fb
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column formapagto
+		dataType: string
+		lineageTag: 510949ce-fed2-4187-8550-a19d2feb8698
+		summarizeBy: none
+		sourceColumn: formapagto
+
+		annotation SummarizationSetBy = Automatic
+
+	column centro_distribuicao
+		dataType: string
+		lineageTag: ecfbb655-9ae9-453f-af9a-da4d4702c457
+		summarizeBy: none
+		sourceColumn: centro_distribuicao
+
+		annotation SummarizationSetBy = Automatic
+
+	column responsavelpedido
+		dataType: string
+		lineageTag: 5866ca38-cc24-4b51-ab67-4479f243909b
+		summarizeBy: none
+		sourceColumn: responsavelpedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column valor_comissao
+		dataType: double
+		lineageTag: 8f77e685-4ff7-4942-a620-f2cfcd179f79
+		summarizeBy: sum
+		sourceColumn: valor_comissao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lucro_liquido
+		dataType: double
+		lineageTag: 8f299022-9f4a-4eec-a86a-eff3dfcee475
+		summarizeBy: sum
+		sourceColumn: lucro_liquido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column categoriaprod
+		dataType: string
+		lineageTag: e70086cd-3341-4ca0-8749-783c064a61dc
+		summarizeBy: none
+		sourceColumn: categoriaprod
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vendas_linha_petshop_2020_2024 = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\FIAP\Fase5\assets\vendas_linha_petshop_2020_2024.csv"),[Delimiter=";", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"cod_pedido", Int64.Type}, {"regiao_pais", type text}, {"produto", type text}, {"valor", type number}, {"quantidade", Int64.Type}, {"valor_total_bruto", type number}, {"data", type date}, {"estado", type text}, {"formapagto", type text}, {"centro_distribuicao", type text}, {"responsavelpedido", type text}, {"valor_comissao", type number}, {"lucro_liquido", type number}, {"categoriaprod", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

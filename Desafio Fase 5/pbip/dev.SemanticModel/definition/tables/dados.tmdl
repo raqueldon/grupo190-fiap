@@ -1,0 +1,137 @@
+table dados
+	lineageTag: c8e76156-7f86-47d1-aa2a-c9b19118cbc4
+
+	measure 'Total Faturamento' =
+			
+			SUM(vendas_linha_petshop_2020_2024[valor_total_bruto])
+		formatString: "R$ "#,##0.00
+		lineageTag: 153ca47b-aecd-466b-b5fc-2c4ec1e67c5f
+
+	measure 'Total Lucro Liquido' =
+			
+			SUM(vendas_linha_petshop_2020_2024[lucro_liquido])
+		formatString: "R$ "#,##0.00
+		lineageTag: 99379482-1e46-40e7-b569-37199c5bdf48
+
+	measure 'Total Quantidade Vendida' =
+			
+			SUM(vendas_linha_petshop_2020_2024[quantidade])
+		formatString: #,##0
+		lineageTag: 2ea26d53-cd8c-444e-a741-bf61afca2531
+
+	measure 'Total Pedidos' =
+			
+			DISTINCTCOUNT(vendas_linha_petshop_2020_2024[cod_pedido])
+		formatString: #,##0
+		lineageTag: 6c30c80f-b5bb-4839-8d7b-4f898d05b474
+
+	measure 'Total Comissao' =
+			
+			SUM(vendas_linha_petshop_2020_2024[valor_comissao])
+		formatString: "R$ "#,##0.00
+		lineageTag: c5d6e7f8-a9b0-1234-8901-345678901234
+
+	measure 'Ticket Medio' =
+			
+			DIVIDE([Total Faturamento], [Total Pedidos], 0)
+		formatString: "R$ "#,##0.00
+		lineageTag: 1f84ed99-1e9e-4ae0-a9f2-27be38c82036
+
+	measure 'Margem Liquida %' =
+			
+			DIVIDE([Total Lucro Liquido], [Total Faturamento], 0)
+		formatString: 0.00%
+		lineageTag: 6c32a4e0-18d2-45d9-bc37-5b95fb350619
+
+	measure 'Valor Medio Unitario' =
+			
+			AVERAGE(vendas_linha_petshop_2020_2024[valor])
+		formatString: "R$ "#,##0.00
+		lineageTag: 250ab4de-ca9b-4675-a93e-db8bf38e5b95
+
+	measure 'Faturamento YTD' =
+			
+			TOTALYTD([Total Faturamento], dCalendario[Date])
+		formatString: "R$ "#,##0.00
+		lineageTag: d6e7f8a9-b0c1-2345-9012-456789012345
+
+	measure 'Faturamento Mes Anterior' =
+			
+			CALCULATE(
+			    [Total Faturamento],
+			    DATEADD(dCalendario[Date], -1, MONTH)
+			)
+		formatString: "R$ "#,##0.00
+		lineageTag: e7f8a9b0-c1d2-3456-0123-567890123456
+
+	measure 'Faturamento Ano Anterior' =
+			
+			CALCULATE(
+			    [Total Faturamento],
+			    SAMEPERIODLASTYEAR(dCalendario[Date])
+			)
+		formatString: "R$ "#,##0.00
+		lineageTag: f8a9b0c1-d2e3-4567-1234-678901234567
+
+	measure 'Variacao YoY %' =
+			
+			VAR _atual    = [Total Faturamento]
+			VAR _anterior = [Faturamento Ano Anterior]
+			RETURN
+			IF(
+			    _anterior = 0 || ISBLANK(_anterior),
+			    BLANK(),
+			    DIVIDE(_atual - _anterior, _anterior)
+			)
+		formatString: +0.00%;-0.00%;0.00%
+		lineageTag: a9b0c1d2-e3f4-5678-2345-789012345678
+
+	measure 'Variacao MoM %' =
+			
+			VAR _atual    = [Total Faturamento]
+			VAR _anterior = [Faturamento Mes Anterior]
+			RETURN
+			IF(
+			    _anterior = 0 || ISBLANK(_anterior),
+			    BLANK(),
+			    DIVIDE(_atual - _anterior, _anterior)
+			)
+		formatString: +0.00%;-0.00%;0.00%
+		lineageTag: b0c1d2e3-f4a5-6789-3456-890123456789
+
+	measure 'Media Movel 3 Meses' =
+			
+			AVERAGEX(
+			    DATESINPERIOD(
+			        dCalendario[Date],
+			        LASTDATE(dCalendario[Date]),
+			        -3,
+			        MONTH
+			    ),
+			    [Total Faturamento]
+			)
+		formatString: "R$ "#,##0.00
+		lineageTag: c1d2e3f4-a5b6-7890-4567-901234567890
+
+	column 'Coluna 1'
+		dataType: string
+		isHidden
+		lineageTag: f068f50a-d96f-4424-97d0-23b37d9abfea
+		summarizeBy: none
+		sourceColumn: Coluna 1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dados = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+

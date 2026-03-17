@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "cc33dd44ee55ff66aa77",
+  "position": {
+    "x": 795,
+    "y": 195,
+    "z": 6,
+    "height": 235,
+    "width": 465
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vendas_linha_petshop_2020_2024"
+                    }
+                  },
+                  "Property": "formapagto"
+                }
+              },
+              "queryRef": "vendas_linha_petshop_2020_2024.formapagto",
+              "nativeQueryRef": "formapagto"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dados"
+                    }
+                  },
+                  "Property": "Total Pedidos"
+                }
+              },
+              "queryRef": "dados.Total Pedidos",
+              "nativeQueryRef": "Total Pedidos"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
