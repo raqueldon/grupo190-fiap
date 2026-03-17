@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p4crd04",
+  "position": {
+    "x": 1190,
+    "y": 65,
+    "z": 2,
+    "height": 50,
+    "width": 70
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dados"
+                    }
+                  },
+                  "Property": "Total Comissao"
+                }
+              },
+              "queryRef": "dados.Total Comissao",
+              "nativeQueryRef": "Total Comissao"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dados"
+                  }
+                },
+                "Property": "Total Comissao"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

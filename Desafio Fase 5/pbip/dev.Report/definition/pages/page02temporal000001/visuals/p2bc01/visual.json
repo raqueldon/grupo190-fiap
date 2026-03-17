@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ee55ff66aa77bb88cc99",
+  "name": "p2bc01",
   "position": {
-    "x": 615,
-    "y": 445,
-    "z": 8,
-    "height": 255,
-    "width": 645
+    "x": 860,
+    "y": 130,
+    "z": 4,
+    "height": 270,
+    "width": 400
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "vendas_linha_petshop_2020_2024"
+                      "Entity": "dCalendario"
                     }
                   },
-                  "Property": "regiao_pais"
+                  "Property": "Ano"
                 }
               },
-              "queryRef": "vendas_linha_petshop_2020_2024.regiao_pais",
-              "nativeQueryRef": "regiao_pais"
+              "queryRef": "dCalendario.Ano",
+              "nativeQueryRef": "Ano"
             }
           ]
         },
@@ -53,13 +53,13 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dados"
+                    "Entity": "dCalendario"
                   }
                 },
-                "Property": "Total Faturamento"
+                "Property": "Ano"
               }
             },
             "direction": "Descending"

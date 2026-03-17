@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "p4txt01",
+  "position": {
+    "x": 20,
+    "y": 10,
+    "z": 0,
+    "height": 45,
+    "width": 900
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": {
+              "expr": {
+                "Literal": {
+                  "Value": "[{\"textRuns\": [{\"value\": \"An\\u00e1lise Regional e Rentabilidade\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"16pt\"}}], \"alignment\": \"left\"}]"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

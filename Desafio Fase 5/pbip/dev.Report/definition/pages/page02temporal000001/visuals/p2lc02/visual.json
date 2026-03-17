@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ee55ff66aa77bb88cc99",
+  "name": "p2lc02",
   "position": {
-    "x": 615,
-    "y": 445,
-    "z": 8,
-    "height": 255,
-    "width": 645
+    "x": 20,
+    "y": 415,
+    "z": 5,
+    "height": 280,
+    "width": 1240
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "vendas_linha_petshop_2020_2024"
+                      "Entity": "dCalendario"
                     }
                   },
-                  "Property": "regiao_pais"
+                  "Property": "Ano-Mes"
                 }
               },
-              "queryRef": "vendas_linha_petshop_2020_2024.regiao_pais",
-              "nativeQueryRef": "regiao_pais"
+              "queryRef": "dCalendario.Ano-Mes",
+              "nativeQueryRef": "Ano-Mes"
             }
           ]
         },
@@ -45,27 +45,23 @@
               },
               "queryRef": "dados.Total Faturamento",
               "nativeQueryRef": "Total Faturamento"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dados"
+                    }
+                  },
+                  "Property": "Media Movel 3 Meses"
+                }
+              },
+              "queryRef": "dados.Media Movel 3 Meses",
+              "nativeQueryRef": "Media Movel 3 Meses"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dados"
-                  }
-                },
-                "Property": "Total Faturamento"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": false
       }
     },
     "drillFilterOtherVisuals": true

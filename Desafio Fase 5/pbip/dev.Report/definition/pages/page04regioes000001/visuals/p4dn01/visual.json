@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ee55ff66aa77bb88cc99",
+  "name": "p4dn01",
   "position": {
-    "x": 615,
-    "y": 445,
-    "z": 8,
-    "height": 255,
-    "width": 645
+    "x": 540,
+    "y": 130,
+    "z": 4,
+    "height": 270,
+    "width": 360
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
         "Category": {
@@ -22,11 +22,11 @@
                       "Entity": "vendas_linha_petshop_2020_2024"
                     }
                   },
-                  "Property": "regiao_pais"
+                  "Property": "formapagto"
                 }
               },
-              "queryRef": "vendas_linha_petshop_2020_2024.regiao_pais",
-              "nativeQueryRef": "regiao_pais"
+              "queryRef": "vendas_linha_petshop_2020_2024.formapagto",
+              "nativeQueryRef": "formapagto"
             }
           ]
         },
@@ -48,24 +48,6 @@
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "dados"
-                  }
-                },
-                "Property": "Total Faturamento"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": false
       }
     },
     "drillFilterOtherVisuals": true

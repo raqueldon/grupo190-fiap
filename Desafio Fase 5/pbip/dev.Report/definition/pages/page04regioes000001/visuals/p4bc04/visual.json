@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ee55ff66aa77bb88cc99",
+  "name": "p4bc04",
   "position": {
-    "x": 615,
-    "y": 445,
-    "z": 8,
-    "height": 255,
-    "width": 645
+    "x": 800,
+    "y": 415,
+    "z": 7,
+    "height": 280,
+    "width": 460
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -22,11 +22,11 @@
                       "Entity": "vendas_linha_petshop_2020_2024"
                     }
                   },
-                  "Property": "regiao_pais"
+                  "Property": "centro_distribuicao"
                 }
               },
-              "queryRef": "vendas_linha_petshop_2020_2024.regiao_pais",
-              "nativeQueryRef": "regiao_pais"
+              "queryRef": "vendas_linha_petshop_2020_2024.centro_distribuicao",
+              "nativeQueryRef": "centro_distribuicao"
             }
           ]
         },
