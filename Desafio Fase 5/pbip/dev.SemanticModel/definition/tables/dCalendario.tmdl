@@ -34,15 +34,20 @@ table dCalendario
 		lineageTag: e5f6a7b8-c9d0-1234-ef01-345678901234
 		summarizeBy: none
 		sourceColumn: Mes Nome
+		sortByColumn: 'Mes Numero'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Ano-Mes'
+	column Ano-Mes
 		dataType: string
 		lineageTag: a7b8c9d0-e1f2-3456-0123-567890123456
 		summarizeBy: none
-		sortByColumn: Date
 		sourceColumn: Ano-Mes
+		sortByColumn: 'Mes Numero'
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -54,12 +59,12 @@ table dCalendario
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Ano-Trimestre'
+	column Ano-Trimestre
 		dataType: string
 		lineageTag: c9d0e1f2-a3b4-5678-2345-789012345678
 		summarizeBy: none
-		sortByColumn: Date
 		sourceColumn: Ano-Trimestre
+		sortByColumn: Date
 
 		annotation SummarizationSetBy = Automatic
 
