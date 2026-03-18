@@ -14,13 +14,11 @@
       "general": [
         {
           "properties": {
-            "paragraphs": {
-              "expr": {
-                "Literal": {
-                  "Value": "[{\"textRuns\": [{\"value\": \"An\\u00e1lise Temporal \\u2014 Faturamento ao Longo do Tempo\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"16pt\"}}], \"alignment\": \"left\"}]"
-                }
+            "paragraphs": [
+              {
+                "textRuns": []
               }
-            }
+            ]
           }
         }
       ]

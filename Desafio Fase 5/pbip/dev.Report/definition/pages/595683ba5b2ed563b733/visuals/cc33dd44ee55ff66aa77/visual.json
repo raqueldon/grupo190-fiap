@@ -26,7 +26,8 @@
                 }
               },
               "queryRef": "vendas_linha_petshop_2020_2024.formapagto",
-              "nativeQueryRef": "formapagto"
+              "nativeQueryRef": "formapagto",
+              "active": true
             }
           ]
         },
@@ -50,6 +51,101 @@
         }
       }
     },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c389ad8ce0090080966e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "vendas_linha_petshop_2020_2024"
+              }
+            },
+            "Property": "formapagto"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8a66c03853750aa82dcb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dados"
+              }
+            },
+            "Property": "Total Pedidos"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

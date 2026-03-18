@@ -3,9 +3,9 @@
   "name": "aa11bb22cc33dd44ee55",
   "position": {
     "x": 20,
-    "y": 10,
+    "y": 0,
     "z": 10,
-    "height": 38,
+    "height": 55,
     "width": 200
   },
   "visual": {
@@ -26,7 +26,8 @@
                 }
               },
               "queryRef": "dCalendario.Ano",
-              "nativeQueryRef": "Ano"
+              "nativeQueryRef": "Ano",
+              "active": true
             }
           ]
         }

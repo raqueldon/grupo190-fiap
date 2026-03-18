@@ -14,13 +14,11 @@
       "general": [
         {
           "properties": {
-            "paragraphs": {
-              "expr": {
-                "Literal": {
-                  "Value": "[{\"textRuns\": [{\"value\": \"An\\u00e1lise Regional e Rentabilidade\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"16pt\"}}], \"alignment\": \"left\"}]"
-                }
+            "paragraphs": [
+              {
+                "textRuns": []
               }
-            }
+            ]
           }
         }
       ]

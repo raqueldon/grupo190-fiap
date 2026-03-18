@@ -25,12 +25,6 @@ table dados
 		formatString: #,##0
 		lineageTag: 6c30c80f-b5bb-4839-8d7b-4f898d05b474
 
-	measure 'Total Comissao' =
-			
-			SUM(vendas_linha_petshop_2020_2024[valor_comissao])
-		formatString: "R$ "#,##0.00
-		lineageTag: c5d6e7f8-a9b0-1234-8901-345678901234
-
 	measure 'Ticket Medio' =
 			
 			DIVIDE([Total Faturamento], [Total Pedidos], 0)
@@ -48,6 +42,12 @@ table dados
 			AVERAGE(vendas_linha_petshop_2020_2024[valor])
 		formatString: "R$ "#,##0.00
 		lineageTag: 250ab4de-ca9b-4675-a93e-db8bf38e5b95
+
+	measure 'Total Comissao' =
+			
+			SUM(vendas_linha_petshop_2020_2024[valor_comissao])
+		formatString: "R$ "#,##0.00
+		lineageTag: c5d6e7f8-a9b0-1234-8901-345678901234
 
 	measure 'Faturamento YTD' =
 			

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "p2crd04",
   "position": {
-    "x": 1110,
-    "y": 65,
+    "x": 1088,
+    "y": 16,
     "z": 2,
-    "height": 50,
-    "width": 150
+    "height": 96.000000000000014,
+    "width": 176
   },
   "visual": {
     "visualType": "card",

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "fa11bb22cc33dd44ee99",
   "position": {
-    "x": 230,
-    "y": 10,
+    "x": 231.25,
+    "y": 0,
     "z": 11,
-    "height": 38,
-    "width": 220
+    "height": 55,
+    "width": 228.75
   },
   "visual": {
     "visualType": "slicer",
@@ -26,7 +26,8 @@
                 }
               },
               "queryRef": "vendas_linha_petshop_2020_2024.regiao_pais",
-              "nativeQueryRef": "regiao_pais"
+              "nativeQueryRef": "regiao_pais",
+              "active": true
             }
           ]
         }

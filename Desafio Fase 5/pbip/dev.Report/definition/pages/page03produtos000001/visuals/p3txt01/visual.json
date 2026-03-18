@@ -14,13 +14,11 @@
       "general": [
         {
           "properties": {
-            "paragraphs": {
-              "expr": {
-                "Literal": {
-                  "Value": "[{\"textRuns\": [{\"value\": \"An\\u00e1lise de Produtos e Categorias\", \"textStyle\": {\"fontWeight\": \"bold\", \"fontSize\": \"16pt\"}}], \"alignment\": \"left\"}]"
-                }
+            "paragraphs": [
+              {
+                "textRuns": []
               }
-            }
+            ]
           }
         }
       ]

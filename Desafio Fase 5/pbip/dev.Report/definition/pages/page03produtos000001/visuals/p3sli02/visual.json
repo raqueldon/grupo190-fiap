@@ -3,10 +3,10 @@
   "name": "p3sli02",
   "position": {
     "x": 240,
-    "y": 65,
+    "y": 16,
     "z": 1,
-    "height": 50,
-    "width": 300
+    "height": 64,
+    "width": 288
   },
   "visual": {
     "visualType": "slicer",
@@ -26,13 +26,13 @@
                 }
               },
               "queryRef": "vendas_linha_petshop_2020_2024.categoriaprod",
-              "nativeQueryRef": "categoriaprod"
+              "nativeQueryRef": "categoriaprod",
+              "active": true
             }
           ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "data": [
         {
@@ -47,6 +47,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

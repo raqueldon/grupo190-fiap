@@ -26,7 +26,8 @@
                 }
               },
               "queryRef": "vendas_linha_petshop_2020_2024.formapagto",
-              "nativeQueryRef": "formapagto"
+              "nativeQueryRef": "formapagto",
+              "active": true
             }
           ]
         },

@@ -57,7 +57,7 @@ table vendas_linha_petshop_2020_2024
 
 	column data
 		dataType: dateTime
-		formatString: Long Date
+		formatString: Short Date
 		lineageTag: 221655f0-953b-43f9-a063-1b10357d095f
 		summarizeBy: none
 		sourceColumn: data

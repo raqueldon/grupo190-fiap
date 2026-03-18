@@ -3,10 +3,10 @@
   "name": "p2sli02",
   "position": {
     "x": 240,
-    "y": 65,
+    "y": 16,
     "z": 1,
-    "height": 50,
-    "width": 200
+    "height": 64,
+    "width": 208
   },
   "visual": {
     "visualType": "slicer",
@@ -26,13 +26,13 @@
                 }
               },
               "queryRef": "dCalendario.Trimestre",
-              "nativeQueryRef": "Trimestre"
+              "nativeQueryRef": "Trimestre",
+              "active": true
             }
           ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "data": [
         {
@@ -47,6 +47,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }
